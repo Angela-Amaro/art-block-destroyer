@@ -1,6 +1,3 @@
-//selects the button on the HTML document
-var generateButton = document.getElementById("#generate");
-
 //Variables to randomize the prompt
 var animals = [
   "zebra",
@@ -321,9 +318,10 @@ function writePrompt() {
 
   promptText.value = artPrompt;
 }
-
-//this is an event listener for when the generate button is clicked
-generateButton.addEventListener("click", writePrompt);
+//selects the button on the HTML document
+// var displayDate = console.log("hello");
+// var button = document.getElementById("#myBtn")
+// button.addEventListener("click", displayDate);
 
 function generatePrompt() {
   var genReady = prompt("Are you ready to get rid of your art block?");
@@ -401,3 +399,6 @@ function generatePrompt() {
   // }
   // return remember
 }
+var generateButton = document.getElementById("mybtn");
+// this is an event listener for when the generate button is clicked
+generateButton.addEventListener("click", writePrompt);
