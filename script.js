@@ -309,19 +309,13 @@ var color = [
 ];
 
 //generated based on users inputs of wants and dont wants
-var genlibrary = "";
-
+var genlibrary = [];
 //this function will write the prompt
 function writePrompt() {
   var artPrompt = generatePrompt();
-  var promptText = document.querySelector("#genartprompt");
-
+  var promptText = document.getElementById("genartprompt");
   promptText.value = artPrompt;
 }
-//selects the button on the HTML document
-// var displayDate = console.log("hello");
-// var button = document.getElementById("#myBtn")
-// button.addEventListener("click", displayDate);
 
 function generatePrompt() {
   var genReady = prompt("Are you ready to get rid of your art block?");
@@ -340,33 +334,40 @@ function generatePrompt() {
   var col = false;
 
   //this will check the boolean based on the users input to be true or false
-  //if yes, then the category will be added to the genlibrary variable
-  if (confirm("Do you want your prompt to contain animals?")) {
-    ani = true;
-    genlibrary += animals;
+  //if yes, then the category will be added, select a random element from the category,and then adds it to the genlibrary variable
+  if (confirm("Do you want your prompt to contain adjectives?")) {
+    adj = true;
+    let genAdj = adjective[Math.floor(Math.random() * adjective.length)];
+    genlibrary.push(genAdj);
+  }
+  if (confirm("Do you want your prompt to contain colors?")) {
+    col = true;
+    let genCol = color[Math.floor(Math.random() * color.length)];
+    genlibrary.push(genCol);
   }
 
   if (confirm("Do you want your prompt to contain people?")) {
     per = true;
-    genlibrary += person;
+    let genPer = person[Math.floor(Math.random() * person.length)];
+    genlibrary.push(genPer);
   }
 
-  if (confirm("Do you want your prompt to contain adjectives?")) {
-    adj = true;
-    genlibrary += adjective;
+  if (confirm("Do you want your prompt to contain animals?")) {
+    ani = true;
+    let genAni = animals[Math.floor(Math.random() * animals.length)];
+    genlibrary.push(genAni);
   }
 
   if (confirm("Do you want your prompt to contain verbs?")) {
     ver = true;
-    genlibrary += verb;
+    let genVer = verb[Math.floor(Math.random() * verb.length)];
+    genlibrary.push(genVer);
   }
+
   if (confirm("Do you want your prompt to contain places?")) {
     pla = true;
-    genlibrary += place;
-  }
-  if (confirm("Do you want your prompt to contain colors?")) {
-    col = true;
-    genlibrary += color;
+    let genPla = place[Math.floor(Math.random() * place.length)];
+    genlibrary.push(genPla);
   }
   console.log(genlibrary);
 
@@ -381,23 +382,6 @@ function generatePrompt() {
   ) {
     alert("You must select at least one category");
   }
-
-  //this function will generate the prompt
-  // function generatePrompt() {
-  //   var prompt = "";
-  //   var library = genlibrary.split(", ");
-  //   var libraryLength = library.length;
-  //   var random = Math.floor(Math.random() * libraryLength);
-  //   prompt += library[random];
-  //   return prompt;
-
-  //this will randomly choose from each category
-  // function ranAnimal(){
-  //     var remember = "";
-  //     var genAni= animals.length * Math.random();
-  //     remember +=genlibrary.charAt(genAni)
-  // }
-  // return remember
 }
 var generateButton = document.getElementById("mybtn");
 // this is an event listener for when the generate button is clicked
